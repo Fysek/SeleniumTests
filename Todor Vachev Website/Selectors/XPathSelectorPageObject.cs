@@ -12,7 +12,7 @@ namespace SeleniumTests.Todor_Vachev_Website
         {
             PageFactory.InitElements(PropertiesCollection.driver, this);
         }
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"post-108\"]/div/figure/img")]
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"post-109\"]/div/figure/img")]
         public IWebElement imgXPathSelector { get; set; }
     }
 }

@@ -181,88 +181,141 @@ namespace SeleniumTests
         }
 
         [Test]
-        public void TextBoxTest()
-        {
-            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com/special-elements/text-input-field/");
-
-            IWebElement textBox = PropertiesCollection.driver.FindElement(By.Name("username"));
-
-            textBox.SendKeys("Hello there");
-
-            Console.WriteLine(textBox.GetAttribute("value"));
-        }
-
-        [Test]
-        public void CheckBoxTest()
-        {
-            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com/special-elements/check-button-test-3/");
-
-            IWebElement checkBox1 = PropertiesCollection.driver.FindElement(By.CssSelector("#post-33 > div > p:nth-child(8) > input[type=checkbox]:nth-child(1)"));
-            IWebElement checkBox2 = PropertiesCollection.driver.FindElement(By.CssSelector("#post-33 > div > p:nth-child(8) > input[type=checkbox]:nth-child(3)"));
-
-            if (checkBox1.GetAttribute("checked") == "true")
-            {
-                Console.WriteLine("Checked");
-            }
-            else
-            {
-                Console.WriteLine("Not checked");
-            }
-
-            checkBox2.Click();
-            Thread.Sleep(5000);
-
-        }
-
-        [Test]
-        public void RadioButtonTest()
-        {
-            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com/special-elements/radio-button-test/");
-
-            IWebElement radioButton1 = PropertiesCollection.driver.FindElement(By.CssSelector("#post-10 > div > form > p:nth-child(6) > input[type=radio]:nth-child(1)"));
-            IWebElement radioButton2 = PropertiesCollection.driver.FindElement(By.CssSelector("#post-10 > div > form > p:nth-child(6) > input[type=radio]:nth-child(3)"));
-
-            if (radioButton1.GetAttribute("checked") == "true")
-            {
-                Console.WriteLine("Checked");
-            }
-            else
-            {
-                Console.WriteLine("Not checked");
-            }
-            radioButton2.Click();
-            Thread.Sleep(5000);
-        }
-
-        [Test]
-        public void DropDownMenuTest()
-        {
-            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com/special-elements/drop-down-menu-test/");
-
-            IWebElement radioButton1 = PropertiesCollection.driver.FindElement(By.Name("DropDownTest"));
-
-            if (radioButton1.GetAttribute("checked") == "true")
-            {
-                Console.WriteLine("Checked");
-            }
-            else
-            {
-                Console.WriteLine("Not checked");
-            }
-
-            Thread.Sleep(5000);
-        }
-
-        [Test]
         public void AlertBoxTest()
         {
-            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com/special-elements/alert-box/");
+            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com");
+
+            HomePageObject homePage = new HomePageObject();
+            SpecialElementsPageObject specialElementsPage = new SpecialElementsPageObject();
+            AlertBoxPageObject alertBoxPage = new AlertBoxPageObject();
+
+            specialElementsPage = homePage.ClickSpecialElementsPage();
+            alertBoxPage = specialElementsPage.ClickAlertBoxTestPage();
 
             IAlert alert = PropertiesCollection.driver.SwitchTo().Alert();
 
             alert.Accept();
 
             Thread.Sleep(5000);
+
+            if (alertBoxPage.imgAlertBox.Displayed)
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
+        public void TextInputFieldTest()
+        {
+            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com");
+
+            HomePageObject homePage = new HomePageObject();
+            SpecialElementsPageObject specialElementsPage = new SpecialElementsPageObject();
+            TextInputFieldPageObject textInputFieldPage = new TextInputFieldPageObject();
+
+            specialElementsPage = homePage.ClickSpecialElementsPage();
+            textInputFieldPage = specialElementsPage.ClickTextInputFieldTestPage();
+
+            textInputFieldPage.txtTextField.SendKeys("Hello there");
+           
+            Console.WriteLine(textInputFieldPage.txtTextField.GetAttribute("value"));
+        }
+
+        [Test]
+        public void CheckButtonTest()
+        {
+            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com");
+
+            HomePageObject homePage = new HomePageObject();
+            SpecialElementsPageObject specialElementsPage = new SpecialElementsPageObject();
+            CheckButtonTestPageObject checkButtonTestPage = new CheckButtonTestPageObject();
+
+            specialElementsPage = homePage.ClickSpecialElementsPage();
+            checkButtonTestPage = specialElementsPage.ClickCheckButtonTestPage();
+            
+            checkButtonTestPage.btnCheckBox1.Click();
+
+            if (checkButtonTestPage.btnCheckBox1.GetAttribute("checked") == "true")
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Assert.Fail();
+            }
+
+            if (checkButtonTestPage.btnCheckBox2.GetAttribute("checked") == "true")
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Assert.Fail();
+            }
+            
+            checkButtonTestPage.btnCheckBox2.Click();
+
+        }
+
+        [Test]
+        public void RadioButtonTest()
+        {
+            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com");
+
+            HomePageObject homePage = new HomePageObject();
+            SpecialElementsPageObject specialElementsPage = new SpecialElementsPageObject();
+            RadioButtonTestPageObject radioButtonTestPage = new RadioButtonTestPageObject();
+
+            specialElementsPage = homePage.ClickSpecialElementsPage();
+            radioButtonTestPage = specialElementsPage.ClickRadioButtonTestPage();    
+
+            if (radioButtonTestPage.btnRadioButton1.GetAttribute("checked") == "true")
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Assert.Fail();
+            }    
+
+            if (radioButtonTestPage.btnRadioButton2.GetAttribute("checked") == "false")
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Assert.Fail();
+            }
+
+            radioButtonTestPage.btnRadioButton2.Click();
+
+            if (radioButtonTestPage.btnRadioButton2.GetAttribute("checked") == "true")
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
+        public void DropDownMenuTest()
+        {
+            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com");
+
+            HomePageObject homePage = new HomePageObject();
+            SpecialElementsPageObject specialElementsPage = new SpecialElementsPageObject();
+            DropDownMenuTestPageObject dropDownMenuTestPage = new DropDownMenuTestPageObject();
+
+            specialElementsPage = homePage.ClickSpecialElementsPage();
+            dropDownMenuTestPage = specialElementsPage.ClickDropDownMenuTestPage();
+
+            dropDownMenuTestPage.SelectFromDDM("Audi");
         }
 
         [TearDown]
