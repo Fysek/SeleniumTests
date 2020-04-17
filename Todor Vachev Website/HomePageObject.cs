@@ -41,5 +41,15 @@ namespace SeleniumTests.Todor_Vachev_Website
             btnSpecElements.Clicks();
             return new SpecialElementsPageObject();
         }
+        public TestCasesPageObject ClickTestCasesPage()
+        {
+            btnTestCases.Clicks();
+            return new TestCasesPageObject();
+        }
+        public TestScenariosPageObject ClickTestScenariosPage()
+        {
+            btnTestScenarios.Clicks();
+            return new TestScenariosPageObject();
+        }
     }
 }

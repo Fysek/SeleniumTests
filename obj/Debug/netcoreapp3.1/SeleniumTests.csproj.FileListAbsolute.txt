@@ -193,3 +193,5 @@ C:\Users\Dekimo\source\repos\SeleniumTests\obj\Debug\netcoreapp3.1\SeleniumTests
 C:\Users\Dekimo\source\repos\SeleniumTests\obj\Debug\netcoreapp3.1\SeleniumTests.dll
 C:\Users\Dekimo\source\repos\SeleniumTests\obj\Debug\netcoreapp3.1\SeleniumTests.pdb
 C:\Users\Dekimo\source\repos\SeleniumTests\obj\Debug\netcoreapp3.1\SeleniumTests.csprojAssemblyReference.cache
+C:\Users\Dekimo\source\repos\SeleniumTests\obj\Debug\netcoreapp3.1\SeleniumTests.csproj.CoreCompileInputs.cache
+C:\Users\Dekimo\source\repos\SeleniumTests\obj\Debug\netcoreapp3.1\SeleniumTests.genruntimeconfig.cache

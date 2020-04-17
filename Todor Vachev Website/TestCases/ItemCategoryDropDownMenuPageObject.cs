@@ -13,7 +13,7 @@ namespace SeleniumTests.Todor_Vachev_Website
             PageFactory.InitElements(PropertiesCollection.driver, this);
         }
         
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"post - 78\"]/div/figure/img")]
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"post-78\"]/div/figure/img")]
         public IWebElement imgDropDownMenu { get; set; }
     }
 }

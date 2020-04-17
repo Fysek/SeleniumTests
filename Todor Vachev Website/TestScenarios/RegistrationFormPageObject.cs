@@ -12,5 +12,14 @@ namespace SeleniumTests.Todor_Vachev_Website
         {
             PageFactory.InitElements(PropertiesCollection.driver, this);
         }
+
+        [FindsBy(How = How.Name, Using = "userid")]
+        public IWebElement txtUserID { get; set; }
+
+        [FindsBy(How = How.Name, Using = "passid")]
+        public IWebElement txtPassword { get; set; }
+
+        [FindsBy(How = How.Name, Using = "username")]
+        public IWebElement txtName { get; set; }
     }
 }

@@ -18,15 +18,15 @@ namespace SeleniumTests.Todor_Vachev_Website
 
         [FindsBy(How = How.XPath, Using = "//*[@id=\"main-content\"]/article[2]/div[2]/header/h3/a")]
         public IWebElement btnRegisterForm { get; set; }
-        public ItemCategoryDropDownMenuPageObject ClickItemCategoryDropDownMenuPage()
+        public LoginFormPageObject ClickLoginFormPage()
         {
             btnLoginForm.Clicks();
-            return new ItemCategoryDropDownMenuPageObject();
+            return new LoginFormPageObject();
         }
-        public LoginButtonLoginFormPageObject ClickLoginButtonLoginFormPage()
+        public RegistrationFormPageObject ClickRegistrationFormPage()
         {
             btnRegisterForm.Clicks();
-            return new LoginButtonLoginFormPageObject();
+            return new RegistrationFormPageObject();
         }
     }
 }

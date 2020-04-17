@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using NUnit.Framework.Internal;
 using System.Threading;
 using SeleniumTests.Todor_Vachev_Website;
+
 namespace SeleniumTests
 {
     class TodorVachevTests
@@ -316,6 +317,115 @@ namespace SeleniumTests
             dropDownMenuTestPage = specialElementsPage.ClickDropDownMenuTestPage();
 
             dropDownMenuTestPage.SelectFromDDM("Audi");
+        }
+
+        [Test]
+        public void ItemsCategoryDropDownMenuTest()
+        {
+            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com");
+
+            HomePageObject homePage = new HomePageObject();
+            TestCasesPageObject testCasesPage = new TestCasesPageObject();
+            ItemCategoryDropDownMenuPageObject itemCatDropDownPage = new ItemCategoryDropDownMenuPageObject();
+
+            testCasesPage = homePage.ClickTestCasesPage();
+            itemCatDropDownPage = testCasesPage.ClickItemCategoryDropDownMenuPage();
+
+            if (itemCatDropDownPage.imgDropDownMenu.Displayed)
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Assert.Fail();
+            }
+
+        }
+
+        [Test]
+        public void LoginButtonLoginFormTest()
+        {
+            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com");
+
+            HomePageObject homePage = new HomePageObject();
+            TestCasesPageObject testCasesPage = new TestCasesPageObject();
+            LoginButtonLoginFormPageObject loginButtonLoginFormPage = new LoginButtonLoginFormPageObject();
+
+            testCasesPage = homePage.ClickTestCasesPage();
+            loginButtonLoginFormPage = testCasesPage.ClickLoginButtonLoginFormPage();
+
+            if (loginButtonLoginFormPage.btnRegButton.Displayed)
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Assert.Fail();
+            }
+
+        }
+
+        [Test]
+        public void UsernameFieldLoginFormTest()
+        {
+            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com");
+
+            HomePageObject homePage = new HomePageObject();
+            TestCasesPageObject testCasesPage = new TestCasesPageObject();
+            UsernameFieldLoginFormPageObject usernameFieldLoginFormPage = new UsernameFieldLoginFormPageObject();
+
+            testCasesPage = homePage.ClickTestCasesPage();
+            usernameFieldLoginFormPage = testCasesPage.ClickUsernameFieldLoginFormPage();
+
+            if (usernameFieldLoginFormPage.imgUsernameField.Displayed)
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Assert.Fail();
+            }
+
+        }
+
+        [Test]
+        public void LoginFormScenarioTest()
+        {
+            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com");
+
+            HomePageObject homePage = new HomePageObject();
+            TestScenariosPageObject testScenariosPage = new TestScenariosPageObject();
+            LoginFormPageObject loginFormPage = new LoginFormPageObject();
+
+            testScenariosPage = homePage.ClickTestScenariosPage();
+            loginFormPage = testScenariosPage.ClickLoginFormPage();
+            loginFormPage.txtUsername.SendKeys("MEE");
+            loginFormPage.txtPassword.SendKeys("password");
+            loginFormPage.txtRepeatPassword.SendKeys("password1");
+
+            Assert.AreEqual(SeleniumGetMethods.GetText(loginFormPage.txtUsername), "MEE");
+            Assert.AreEqual(SeleniumGetMethods.GetText(loginFormPage.txtPassword), "password");
+            Assert.AreEqual(SeleniumGetMethods.GetText(loginFormPage.txtRepeatPassword), "password1");
+        }
+
+        [Test]
+        public void RegistrationFormScenarioTest()
+        {
+            PropertiesCollection.driver.Navigate().GoToUrl("http://testing.todorvachev.com");
+
+            HomePageObject homePage = new HomePageObject();
+            TestScenariosPageObject testScenariosPage = new TestScenariosPageObject();
+            RegistrationFormPageObject registrationFormPage = new RegistrationFormPageObject();
+
+            testScenariosPage = homePage.ClickTestScenariosPage();
+            registrationFormPage = testScenariosPage.ClickRegistrationFormPage();
+            registrationFormPage.txtUserID.SendKeys("IDeeeee");
+            registrationFormPage.txtPassword.SendKeys("password");
+            registrationFormPage.txtName.SendKeys("Mynamee");
+
+            Assert.AreEqual(SeleniumGetMethods.GetText(registrationFormPage.txtUserID), "IDeeeee");
+            Assert.AreEqual(SeleniumGetMethods.GetText(registrationFormPage.txtPassword), "password");
+            Assert.AreEqual(SeleniumGetMethods.GetText(registrationFormPage.txtName), "Mynamee");
         }
 
         [TearDown]
